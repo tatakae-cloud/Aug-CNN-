@@ -8,6 +8,52 @@
 
 Implemented from scratch based on ["Diagnose like a Radiologist"](https://arxiv.org/abs/1801.09927) (Guan et al., 2018).
 
+---
+
+## 🩺 Problem Statement
+
+### The Challenge
+
+Chest X-rays (CXRs) are one of the most common radiological examinations for diagnosing lung and heart diseases. However, accurate diagnosis faces critical challenges:
+
+**1. Complex Pathologies**
+- 14+ different thoracic diseases with subtle visual differences
+- Multiple co-occurring conditions in a single image
+- Small lesions (e.g., nodules) easily missed by human eye
+
+**2. Heavy Clinical Workload**
+- Radiologists review hundreds of X-rays daily
+- High cognitive load leads to diagnostic errors
+- Limited specialists in rural/underserved areas
+
+**3. Current Limitations**
+- Traditional CNNs use global images → noise from irrelevant regions
+- Small disease-specific lesions get lost in 224×224 images
+- No interpretability → radiologists cannot validate AI decisions
+
+### Why This Matters
+
+**Medical Impact:**
+- Early detection saves lives (lung cancer, pneumonia, TB)
+- Reduces radiologist burnout and diagnostic errors
+- Enables AI-assisted screening in resource-limited settings
+
+**Technical Innovation:**
+- Attention mechanism focuses on disease-specific regions
+- Interpretable heatmaps show WHERE the model is looking
+- Multi-branch architecture combines global context + local detail
+
+### Our Solution
+
+**Attention-Guided 3-Branch CNN** that:
+1. ✅ Learns where to look (attention heatmaps)
+2. ✅ Focuses on small lesions (local branch)
+3. ✅ Maintains global context (global branch)
+4. ✅ Provides interpretability (visualizable attention)
+5. ✅ Improves accuracy on challenging diseases (Hernia +2.1%, Nodule +1.6%)
+
+---
+
 <p align="center">
   <img src="visualizations/attention_example.png" alt="Attention Mechanism" width="800"/>
   <br>
@@ -337,3 +383,6 @@ Test:  20% patients (2,424 images)
 - Add weighted loss for class imbalance
 - Validate on external datasets (CheXpert, MIMIC-CXR)
 
+---
+
+**⭐ Star this repo if you find it useful!**
